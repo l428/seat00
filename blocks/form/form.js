@@ -439,6 +439,7 @@ export default async function decorate(block) {
   let rules = true;
   let form;
   if (formDef) {
+    formDef.action = submitBaseUrl + (formDef.action || '');
     if (isDocumentBasedForm(formDef)) {
       const transform = new DocBasedFormToAF();
       formDef = transform.transform(formDef);
@@ -453,7 +454,6 @@ export default async function decorate(block) {
         form = await afModule.initAdaptiveForm(formDef, createForm);
       }
     }
-    formDef.action = submitBaseUrl + (formDef.action || '');
     form.dataset.action = formDef.action || pathname?.split('.json')[0];
     form.dataset.source = source;
     form.dataset.rules = rules;
