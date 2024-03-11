@@ -426,6 +426,10 @@ main .form form .wizard.left .panel-wrapper{
         margin: auto;
     }
 
+    main .form form .field-cardart.field-wrapper.image-wrapper {
+       grid-column: 2/5;
+    }
+
     main form fieldset > .field-wrapper:not(fieldset):not(.plain-text-wrapper),
     main form fieldset.field-applicationinformation > .field-wrapper  {
         grid-column: span 6;

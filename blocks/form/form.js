@@ -212,8 +212,8 @@ function createImage(fd) {
   const field = createFieldWrapper(fd);
   const image = createOptimizedPicture(fd.source,
     fd.altText || fd.name,
-    true,
-    [{ media: '(min-width: 600px)', width: '600' }, { width: '750' }]
+    false,
+    [{ media: '(min-width: 600px)', width: '400' }, { width: '750' }]
     );
   field.append(image);
   return field;
