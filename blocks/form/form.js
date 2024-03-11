@@ -11,6 +11,7 @@ import DocBasedFormToAF from './transform.js';
 import transferRepeatableDOM from './components/repeat.js';
 import { handleSubmit } from './submit.js';
 import { submitBaseUrl } from './constant.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export const DELAY_MS = 0;
 let captchaField;
@@ -209,13 +210,12 @@ function createPlainText(fd) {
 
 function createImage(fd) {
   const field = createFieldWrapper(fd);
-  const image = `
-  <picture>
-    <source srcset="${fd.source}?width=2000&optimize=medium" media="(min-width: 600px)">
-    <source srcset="${fd.source}?width=750&optimize=medium">
-    <img alt="${fd.altText || fd.name}" src="${fd.source}?width=750&optimize=medium">
-  </picture>`;
-  field.innerHTML = image;
+  const image = createOptimizedPicture(fd.source,
+    fd.altText || fd.name,
+    true,
+    [{ media: '(min-width: 600px)', width: '600' }, { width: '750' }]
+    );
+  field.append(image);
   return field;
 }
 

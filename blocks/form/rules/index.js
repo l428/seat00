@@ -148,7 +148,7 @@ function handleRuleEngineEvent(e, form, generateFormRendition) {
     fieldChanged(payload, form, generateFormRendition);
   } else if (type === 'submitSuccess') {
     submitSuccess(e, form);
-  } else if (type === 'submitFailure') {
+  } else if (type === 'submitError') {
     submitFailure(e, form);
   }
 }
@@ -202,10 +202,6 @@ export async function loadRuleEngine(formDef, htmlForm, captcha, genFormRenditio
   form.subscribe((e) => {
     handleRuleEngineEvent(e, htmlForm);
   }, 'submitSuccess');
-
-  form.subscribe((e) => {
-    handleRuleEngineEvent(e, htmlForm);
-  }, 'submitFailure');
 
   form.subscribe((e) => {
     handleRuleEngineEvent(e, htmlForm);
