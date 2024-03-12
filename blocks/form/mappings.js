@@ -3,7 +3,7 @@
  *
  * */
 export default async function componentDecorator(fd) {
-  const { ':type': type = '', fieldType } = fd;
+  const { ':type': type = '', fieldType, name } = fd;
   if (fieldType === 'file-input') {
     const module = await import('./components/file.js');
     return module.default;
@@ -12,5 +12,9 @@ export default async function componentDecorator(fd) {
     const module = await import('./components/wizard.js');
     return module.default;
   }
+  // if (name === 'ownership') {
+  //   const module = await import('./components/switch.js');
+  //   return module.default;
+  // }
   return null;
 }
