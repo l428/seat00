@@ -122,7 +122,7 @@ const createSelect = withFieldWrapper((fd) => {
   return select;
 });
 
-function createRadioOrCheckbox(fd) {
+export function createRadioOrCheckbox(fd) {
   const wrapper = createFieldWrapper(fd);
   const input = createInput(fd);
   const [value, uncheckedValue] = fd.enum || [];
